@@ -1,0 +1,622 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommonLibraries.Core.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Blazorify.Utilities.Styling.CssBuilder">
+            <summary>
+            Implementation of the <see cref="T:Blazorify.Utilities.Styling.ICssBuilder"/>. Use this class throught the interface.
+            </summary>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilder.#ctor(Blazorify.Utilities.Styling.CssBuilderOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Blazorify.Utilities.Styling.CssBuilder"/> class.
+            </summary>
+            <param name="options">An options object which modifies class name generation and other things.</param>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.CssBuilder.Item(System.Object[])">
+            <inheritdoc />
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.CssBuilder.Item(System.String,System.ValueTuple{System.String,System.Func{System.Boolean}}[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilder.Create(Blazorify.Utilities.Styling.CssBuilderOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.CssBuilderNamingConventions">
+            <summary>
+            A collection of functions which can be used to configure the <see cref="T:Blazorify.Utilities.Styling.CssBuilderOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilderNamingConventions.None(System.Reflection.PropertyInfo)">
+            <summary>
+            Returns with the property name without any conversion.
+            </summary>
+            <param name="info">Property to convert.</param>
+            <returns>The name of the property.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilderNamingConventions.None(System.Enum)">
+            <summary>
+            Returns with the enum name without any conversion.
+            </summary>
+            <param name="value">Enum value to convert.</param>
+            <returns>The name of the enum value.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilderNamingConventions.UnderscoreToHyphen(System.Reflection.PropertyInfo)">
+            <summary>
+            Returns with a css class name which converted from the property name by
+            replacing underscores(_) with hyphen(-).
+            </summary>
+            <param name="info">Property to convert.</param>
+            <returns>The name of the property where the underscores(_) converted to hyphen(-).</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilderNamingConventions.UnderscoreToHyphen(System.Enum)">
+            <summary>
+            Returns with a css class name which converted from the enum name by
+            replacing underscores(_) with hyphen(-).
+            </summary>
+            <param name="value">Enum value to convert.</param>
+            <returns>The name of the enum where the underscores(_) converted to hyphen(-).</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilderNamingConventions.KebabCase(System.Reflection.PropertyInfo)">
+            <summary>
+            Returns with a css class name which converted from the property name by using kebab case syntax.
+            </summary>
+            <remarks>
+            In kebab case every uppercase letter is converted to lowercase and with the exception of
+            the first letter a hyphen(-) is put before it (example: CssClassName -> css-class-name).
+            </remarks>
+            <param name="info">Property to convert.</param>
+            <returns>The name of the property converted to kebab case.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilderNamingConventions.KebabCase(System.Enum)">
+            <summary>
+            Returns with a css class name which converted from the enum name by using kebab case syntax.
+            </summary>
+            <remarks>
+            In kebab case every uppercase letter is converted to lowercase and with the exception of
+            the first letter a hyphen(-) is put before it (example: CssClassName -> css-class-name).
+            </remarks>
+            <param name="value">Enum value to convert.</param>
+            <returns>The name of the enum converted to kebab case.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilderNamingConventions.KebabCaseWithUnderscoreToHyphen(System.Reflection.PropertyInfo)">
+            <summary>
+            Returns with a css class name which converted from the property name by using kebab case syntax
+            and the underscores(_) replaced with hyphen(-).
+            </summary>
+            <remarks>
+            In kebab case every uppercase letter is converted to lowercase and with the exception of
+            the first letter a hyphen(-) is put before it (example: CssClassName -> css-class-name).
+            </remarks>
+            <param name="info">Property to convert.</param>
+            <returns>
+            The name of the property converted to kebab case the underscores(_) replaced with hyphen(-).
+            </returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilderNamingConventions.KebabCaseWithUnderscoreToHyphen(System.Enum)">
+            <summary>
+            Returns with a css class name which converted from the enum name by using kebab case syntax
+            and the underscores(_) replaced with hyphen(-).
+            </summary>
+            <remarks>
+            In kebab case every uppercase letter is converted to lowercase and with the exception of
+            the first letter a hyphen(-) is put before it (example: CssClassName -> css-class-name).
+            </remarks>
+            <param name="value">Enum value to convert.</param>
+            <returns>
+            The name of the enum converted to kebab case the underscores(_) replaced with hyphen(-).
+            </returns>
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.CssBuilderOptions">
+            <summary>
+            Provides programmatic configuration for the css builder.
+            </summary>
+            <remarks>
+            Also contains the caches for anonymous type to class names and enum to class name conversions
+            since the convertes only called before caching but not after and this could lead inconsistent results.
+            </remarks>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilderOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Blazorify.Utilities.Styling.CssBuilderOptions"/> class.
+            </summary>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.CssBuilderOptions.PropertyToClassNameConverter">
+            <summary>
+            Gets or sets the name converter for the property to name conversion which used for anonymous types.
+            </summary>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.CssBuilderOptions.EnumToClassNameConverter">
+            <summary>
+            Gets or sets the name converter for the enum to name conversion which used for enum types.
+            </summary>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.CssBuilderOptions.ExcludeDuplication">
+            <summary>
+            Gets or sets a value indicating whether the class names should be checked before adding to the list.
+            If true then if a css class added then it isn't added again.
+            </summary>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssBuilderOptions.ClearCache">
+            <summary>
+            Clears the connected cache. Use this if you change the settings.
+            </summary>
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.CssClassList">
+            <summary>
+            Represents a list of css classes. The final result is obtainable with the ToString call.
+            </summary>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.CssClassList.CssClasses">
+            <summary>
+            Gets the list of added class names.
+            </summary>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.AddMultiple(System.Object[])">
+            <summary>
+            Adds multiple class definition which can be string, enum, (string, bool),
+            (string, Func&gt;bool&lt;), IEnumerable&gt;string&lt;, another CssDefinition,
+            IReadOnlyDictionary&gt;string, object&lt; with an optional class key.
+            </summary>
+            <param name="values">The list of class definitions.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.String,System.Boolean)">
+            <summary>
+            Adds the css class to the list if the second parameter is true.
+            If the css class is null or empty it is skipped.
+            </summary>
+            <param name="cssClass">A css class.</param>
+            <param name="condition">If true the class is added to the list.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.String,System.Func{System.Boolean})">
+            <summary>
+            Adds the css class to the list if the second parameter evaulates to true.
+            If the css class is null or empty it is skipped.
+            </summary>
+            <param name="cssClass">A css class.</param>
+            <param name="predicate">a predicate, if it returns true then the css class is added to the list.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.ValueTuple{System.String,System.Boolean}[])">
+            <summary>
+            Adds the tuples to the list as css classes. The first parameter of the
+            tuple is used as css class and it is added only if the second value is true.
+            </summary>
+            <param name="tuple">
+            A tuple where the first parameter is a css class and the second
+            value is a bool which determines if the class should be added.
+            </param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.ValueTuple{System.String,System.Func{System.Boolean}}[])">
+            <summary>
+            Adds the tuples to the list as css classes. The first parameter of the
+            tuple is used as css class and it is added only if the second function returns true.
+            </summary>
+            <param name="tuple">
+            A tuple where the first parameter is a css class and the second
+            value is a function which determines if the class should be added.
+            </param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds the strings as classes to the list. If a string contains more than
+            one css class, then it is broken to parts.
+            </summary>
+            <param name="cssList">A css list enumeration.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(Blazorify.Utilities.Styling.CssClassList)">
+            <summary>
+            Adds the css classes from the other CssDefinition.
+            </summary>
+            <param name="cssDefinition">A CssDefinition instance.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.Enum)">
+            <summary>
+            Adds the enum value as css class to the list. The Enum name is converted to css class
+            name with <see cref="P:Blazorify.Utilities.Styling.CssBuilderOptions.EnumToClassNameConverter"/>. This conversion is cached
+            which is bound to the options.
+            </summary>
+            <param name="enumValue">An enum value.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.Object)">
+            <summary>
+            Adds the properties as css classes to the list. For class name the property name used
+            after converted with <see cref="P:Blazorify.Utilities.Styling.CssBuilderOptions.PropertyToClassNameConverter"/>. The properties
+            added only if it is a boolean with value true. On the object all property must be bool type.
+            The conversion method is cached which is bound to the options.
+            </summary>
+            <param name="values">An object that has only bool property. Preferably an anonymous type.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">
+            <summary>
+            Checks if the dictionary has the class element. If yes then adds it's value as classes from it.
+            The dictionary can be null.
+            </summary>
+            <param name="attributes">The attributes dictionary.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.HasClass(System.String)">
+            <summary>
+            Indicates if the className is added to this.
+            </summary>
+            <param name="className">The class name to check.</param>
+            <returns>True if already added; otherwise false.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.ToString">
+            <summary>
+            Returns with the finished css class definition list.
+            </summary>
+            <returns>The class names separated by spaces.</returns>
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.ICssBuilder">
+            <summary>
+            Defines a class that provides the mechanisms to build a css class list. Usage:
+            <para>inject a css builder:</para>
+            <code>@inject ICssBuilder css</code>
+            <para>Recommended using the indexer syntax:</para>
+            <code>&lt;div class="@css["class1", ("class2", condition1), new { class3 = condition2 }]"&gt;...</code>
+            </summary>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.ICssBuilder.Item(System.Object[])">
+            <summary>
+            Starts a new CssDefinition and adds all the as classes.
+            This is the main way to generate css classes in the razor pages.
+            The result created by .ToString() but it can be skipped in razor.
+            Example: class="@Css["class1", new { class2 = condition }]".
+            </summary>
+            <param name="arguments">
+            One or more argument that can be converted to css class.
+            Possible types: string, enum, anonymous type with only bool properties,
+            ValueTuple where first parameter is string, the second is bool or Func&lt;bool&gt;,
+            IEnumerable&lt;string&gt;, another CssDefinition or a IReadOnlyDictionary&lt;string, object&gt; with a class key.</param>
+            <returns>
+            A <see cref="T:Blazorify.Utilities.Styling.CssClassList"/> that contains the processed css classes, and can be used in the class attribute directly.
+            </returns>
+            <remarks>
+            Example:
+            <code>&lt;div class="@Css["class1", ("class2", true), new { class3 = true}, Enum.Class4]&gt;...&lt;/div&gt;</code>
+            </remarks>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.ICssBuilder.Item(System.String,System.ValueTuple{System.String,System.Func{System.Boolean}}[])">
+            <summary>
+            Starts a new CssDefinition and adds all the as classes.
+            This is the main way to generate css classes in the razor pages.
+            The result created by .ToString() but it can be skipped in razor.
+            Example: class="@Css["class1", ("class2", () =&gt; condition)]".
+            </summary>
+            <param name="cssClasses">Default classes to add. If it is null or empty then skipped.</param>
+            <param name="tuple">List of tuple values that evaulated and added conditionally.</param>
+            <returns>
+            A <see cref="T:Blazorify.Utilities.Styling.CssClassList"/> that contains the processed css classes, and can be used in the class attribute directly.
+            </returns>
+            <remarks>
+            This variant created so Func&lt;bool&gt; also can be used on this call without writing out the Func.
+            Example:
+            <code>&lt;div class="@Css["class1", ("class2", () => true)]&gt;...&lt;/div&gt;</code>
+            </remarks>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.ICssBuilder.Create(Blazorify.Utilities.Styling.CssBuilderOptions)">
+            <summary>
+            Starts a new empty CssDefinition. It can be finished with .ToString(). In razor ToString is not neccessary.
+            </summary>
+            <param name="options">Modifies how the css class names is generated. If it is not given the the default used from the CssBuilder.</param>
+            <returns>An empty css definition.</returns>
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.Internals.ThreadsafeCssBuilderCache.EnumEqualityComparer">
+            <summary>
+            Different type of enums with the same values maybe not equals but they have the same hashcode. This comparer ensures the different hashcode.
+            </summary>
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.IStyleBuilder">
+            <summary>
+            Defines a class that provides the mechanisms to build a style declaration block.
+            </summary>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.IStyleBuilder.Item(System.Object[])">
+            <summary>
+            Starts a StyleDefinition and adds all the arguments as stlye. The result is produced by .ToString().
+            </summary>
+            <param name="arguments">List of values that cen be converted to styles.</param>
+            <returns>A StyleDefinition instance that contains the processed arguments, and can be used in the style attribute directly.</returns>
+            <remarks>
+            Example:
+            <code>&lt;div style="@Styles[("width", "100px"),("height", "200px", true), new { BorderWidth = "1px" }]"&gt;...&lt;/div&gt;</code>
+            </remarks>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.IStyleBuilder.Item(System.ValueTuple{System.String,System.String,System.Func{System.Boolean}}[])">
+            <summary>
+            Starts a StyleDefinition and adds all the arguments as stlye. The result is produced by .ToString().
+            </summary>
+            <param name="arguments">List of values that cen be converted to styles.</param>
+            <returns>A StyleDefinition instance that contains the processed arguments, and can be used in the style attribute directly.</returns>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.IStyleBuilder.Item(System.ValueTuple{System.String,System.Func{System.String},System.Boolean}[])">
+            <summary>
+            Starts a StyleDefinition and adds all the arguments as stlye. The result is produced by .ToString().
+            </summary>
+            <param name="arguments">List of values that cen be converted to styles.</param>
+            <returns>A StyleDefinition instance that contains the processed arguments, and can be used in the style attribute directly.</returns>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.IStyleBuilder.Item(System.ValueTuple{System.String,System.Func{System.String},System.Func{System.Boolean}}[])">
+            <summary>
+            Starts a StyleDefinition and adds all the arguments as stlye. The result is produced by .ToString().
+            </summary>
+            <param name="arguments">List of values that cen be converted to styles.</param>
+            <returns>A StyleDefinition instance that contains the processed arguments, and can be used in the style attribute directly.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.IStyleBuilder.Create">
+            <summary>
+            Starts an empty StyleDefinition. The result is produced by .ToString().
+            </summary>
+            <returns>An empty StyleDefinition.</returns>
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.StyleBuilder">
+            <summary>
+            Implementation of the <see cref="T:Blazorify.Utilities.Styling.IStyleBuilder"/>. Use this class throught the interface.
+            </summary>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Blazorify.Utilities.Styling.StyleBuilder"/> class.
+            </summary>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.StyleBuilder.Item(System.Object[])">
+            <inheritdoc />
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.StyleBuilder.Item(System.ValueTuple{System.String,System.String,System.Func{System.Boolean}}[])">
+            <inheritdoc />
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.StyleBuilder.Item(System.ValueTuple{System.String,System.Func{System.String},System.Boolean}[])">
+            <inheritdoc />
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.StyleBuilder.Item(System.ValueTuple{System.String,System.Func{System.String},System.Func{System.Boolean}}[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleBuilder.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleBuilder.ClearCache">
+            <summary>
+            Clears thy style cache.
+            </summary>
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.StyleDeclaration">
+            <summary>
+            Represents a style property and value pair.
+            </summary>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclaration.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Blazorify.Utilities.Styling.StyleDeclaration"/> struct.
+            </summary>
+            <param name="property">The property component of the style element.</param>
+            <param name="value">The value component of the style element.</param>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.StyleDeclaration.Property">
+            <summary>
+            Gets the property component of the style element.
+            </summary>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.StyleDeclaration.Value">
+            <summary>
+            Gets the value component of the style element.
+            </summary>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclaration.op_Equality(Blazorify.Utilities.Styling.StyleDeclaration,Blazorify.Utilities.Styling.StyleDeclaration)">
+            <summary>
+            Checks if left equals to right by Property and Value.
+            </summary>
+            <param name="left">Left element.</param>
+            <param name="right">Right element.</param>
+            <returns>true if the Property and Value equals by case sensitive comparison.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclaration.op_Inequality(Blazorify.Utilities.Styling.StyleDeclaration,Blazorify.Utilities.Styling.StyleDeclaration)">
+            <summary>
+            Checks if left is not equal to right by Property and Value.
+            </summary>
+            <param name="left">Left element.</param>
+            <param name="right">Right element.</param>
+            <returns>true if the Property and Value is not equal by case sensitive comparison.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclaration.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclaration.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclaration.ToString">
+            <summary>
+            Returns the composed "Property:Value" pair as string.
+            </summary>
+            <returns>The "Property:Value" string.</returns>
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.StyleDeclarationBlock">
+            <summary>
+            Represents a group of style rules. The final result is obtainable with the ToString call.
+            </summary>
+        </member>
+        <member name="P:Blazorify.Utilities.Styling.StyleDeclarationBlock.Styles">
+            <summary>
+            Gets the list of added style rules.
+            </summary>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.Add(System.String,System.String,System.Boolean)">
+            <summary>
+            Adds a stlye rule to the end of the declaration block if the
+            condition is true and the value is not null or empty.
+            </summary>
+            <param name="property">
+            The property part of the style rule.
+            </param>
+            <param name="value">
+            The value part of the style rule. Can be null or empty in which case
+            the rule won't be added.
+            </param>
+            <param name="condition">
+            A condition which determines if the style rule should be added.
+            </param>
+            <exception cref="T:System.ArgumentException">Property is null or empty.</exception>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.Add(System.String,System.Func{System.String},System.Boolean)">
+            <summary>
+            Adds a stlye rule to the end of the declaration block if the
+            condition is true and the value function evaulates to not null or empty.
+            </summary>
+            <param name="property">
+            The property part of the style rule.
+            </param>
+            <param name="value">
+            A Function that calculate the value part of the style rule.
+            If it returns null or empty then the style rule won't be added.
+            </param>
+            <param name="condition">
+            A condition which determines if the style rule should be added.
+            </param>
+            <exception cref="T:System.ArgumentException">Property is null or empty.</exception>
+            <exception cref="T:System.ArgumentNullException">The value is null.</exception>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.Add(System.String,System.String,System.Func{System.Boolean})">
+            <summary>
+            Adds a stlye rule to the end of the declaration block if the
+            predicate evaulates to true and the value is not null or empty.
+            </summary>
+            <param name="property">
+            The property part of the style rule.
+            </param>
+            <param name="value">
+            The value part of the style rule. Can be null or empty in which case
+            the rule won't be added.
+            </param>
+            <param name="predicate">
+            A predicate which if evaulates to true then the style rule added othervise it skipped.
+            </param>
+            <exception cref="T:System.ArgumentException">Property is null or empty.</exception>
+            <exception cref="T:System.ArgumentNullException">The value or the predicate is null.</exception>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.Add(System.String,System.Func{System.String},System.Func{System.Boolean})">
+            <summary>
+            Adds a stlye rule to the end of the declaration block if the
+            predicate evaulates to true and the value function evaulates to not null or empty.
+            </summary>
+            <param name="property">
+            The property part of the style rule.
+            </param>
+            <param name="value">
+            A Function that calculate the value part of the style rule.
+            If it returns null or empty then the style rule won't be added.
+            </param>
+            <param name="predicate">
+            A predicate which if evaulates to true then the style rule added othervise it skipped.
+            </param>
+            <exception cref="T:System.ArgumentException">Property is null or empty.</exception>
+            <exception cref="T:System.ArgumentNullException">The value or the predicate is null.</exception>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.Add(Blazorify.Utilities.Styling.StyleDeclarationBlock)">
+            <summary>
+            Adds the styles from the given block to the end of this block.
+            It can be null.
+            </summary>
+            <param name="declarationBlock">A style declaration block or null.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.Add(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">
+            <summary>
+            Adds the contents of the style key to the end of this block.
+            The value in the dictionary should be string or convertible to string.
+            This method doesn't add anything if the attributes is null or there is
+            no style key in it. The value is broken into style rules so it needs
+            to be valid. ( Meaning ; separated list with property:value pairs.)
+            </summary>
+            <param name="attributes">A dictionary which may contain style or null.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.Add(System.Object)">
+            <summary>
+            Adds the properties to the end of this block. The property names used
+            as style property. They converted to kebab-case format and underscores
+            are replaced with hyphen. The property values can be any type that
+            can be converted to string or null. The conversion method is cached
+            which is bound to the style builder.
+            </summary>
+            <remarks>
+            Examples:
+            <code>Stlye.Add(new { BorderWidth = "1px", _webkitTransition = "ease" }) -> border-width:1px;-webkit-transition:ease</code>
+            </remarks>
+            <param name="values">An anonymous object where the properties used as stlye rules.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.AddMultiple(System.Object[])">
+            <summary>
+            Adds multiple object to the end of the declaration block. The objects
+            can be any types that the Add methods can process.
+            </summary>
+            <param name="values">an array of style declaration.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.HasStyle(System.String)">
+            <summary>
+            Determines whether a property is in the style declaration block.
+            </summary>
+            <param name="propertyName">The property to locate in the rules. It can be null.</param>
+            <returns>Returns with this so the calls can be chained.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.GetPropertyValue(System.String)">
+            <summary>
+            Finds and returns with the value of the property. If not found then it returns null.
+            </summary>
+            <param name="propertyName">A property name to find.</param>
+            <returns>Returns the value of the style declaration or null.</returns>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StyleDeclarationBlock.ToString">
+            <summary>
+            Returns with the assembled style definition.
+            </summary>
+            <returns>
+            A string where the style definitions joined with semicolons.
+            </returns>
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.StylingServiceCollectionExtensions">
+            <summary>
+            Extends The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> with AddCssBuilder and AddStyleBuilder.
+            </summary>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StylingServiceCollectionExtensions.AddCssBuilder(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Blazorify.Utilities.Styling.CssBuilderOptions})">
+            <summary>
+            Adds the css builder services to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="serviceCollection">
+            The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add services to.
+            </param>
+            <param name="action">
+            An <see cref="T:System.Action`1"/>  to configure the provided <see cref="T:Blazorify.Utilities.Styling.CssBuilderOptions"/>.
+            </param>
+        </member>
+        <member name="M:Blazorify.Utilities.Styling.StylingServiceCollectionExtensions.AddStyleBuilder(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the style builder services to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="serviceCollection">
+            The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add services to.
+            </param>
+        </member>
+        <member name="T:Blazorify.Utilities.Styling.ThreadsafeCssBuilderCache.EnumEqualityComparer">
+            <summary>
+            Different type of enums with the same values maybe not equals but they have the same hashcode. This comparer ensures the different hashcode.
+            </summary>
+        </member>
+    </members>
+</doc>

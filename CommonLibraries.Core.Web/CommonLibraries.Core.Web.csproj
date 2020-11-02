@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>This package contains a Powerful CssBuilder and StyleBuilder. It targets mainly Blazor use cases but it is perfect to use in asp.net mvc server side scenarios also.</Description>
+    <PackageTags>asp.net; asp.net mvc; asp.net mvc core; blazor; css; style; builder;</PackageTags>
+    <Copyright>Viktor Faddi</Copyright>
+    <Authors>Viktor Faddi</Authors>
+    <Company />
+    <PackageProjectUrl>https://github.com/faddiv/CommonLibraries/CommonLibraries.Core.Web</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/CommonLibraries</RepositoryUrl>
+    <PackageReleaseNotes>See https://github.com/faddiv/CommonLibraries/releases</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>CommonLibraries.Core.Web.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,35 @@
+# Editor configuration, see http://editorconfig.org
+# VS code requers plugin: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+# VS works by default
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{ts,tsx,js,jsx}]
+indent_size = 2
+quote_type = double
+
+[*.{html}]
+indent_size = 2
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+
+[*.{csproj,nuspec,proj,projitems,props,shproj,targets,vbproj,vcxproj,vcxproj.filters,vsixmanifest,vsct}]
+indent_size = 2
+
+[*.sln]
+indent_style = tab
+
+[*.resx]
+indent_size = 2
+
+[*.json]
+indent_size = 2
