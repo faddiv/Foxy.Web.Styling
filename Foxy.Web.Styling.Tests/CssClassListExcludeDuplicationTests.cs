@@ -1,10 +1,8 @@
 using FluentAssertions;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     public class CssClassListExcludeDuplicationTests
     {
@@ -155,6 +153,5 @@ namespace Blazorify.Utilities.Styling
 
             result.Should().Be("c1 c2 c3");
         }
-
     }
 }

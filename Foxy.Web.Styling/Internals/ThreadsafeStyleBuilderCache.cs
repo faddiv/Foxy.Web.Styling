@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 
-namespace Blazorify.Utilities.Styling.Internals
+namespace Foxy.Web.Styling.Internals
 {
     internal class ThreadsafeStyleBuilderCache
     {

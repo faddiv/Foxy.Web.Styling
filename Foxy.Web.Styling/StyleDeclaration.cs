@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     /// <summary>
     /// Represents a style property and value pair.

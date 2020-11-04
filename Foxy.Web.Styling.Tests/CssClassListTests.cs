@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     public class CssClassListTests
     {
@@ -194,6 +194,7 @@ namespace Blazorify.Utilities.Styling
 
             builder.CssClasses.Should().HaveCount(3);
         }
+
         public enum Dummy
         {
             NameName_name = 1,

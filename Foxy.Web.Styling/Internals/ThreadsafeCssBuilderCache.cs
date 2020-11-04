@@ -2,13 +2,14 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace Blazorify.Utilities.Styling.Internals
+namespace Foxy.Web.Styling.Internals
 {
     /* I compared the Dictionary with the ConcurrentDictionary.
      * It turns out on read, only 20% performace lost, so I dropped the thread unsafe variant.
      * I also experimented with Enum caching. With default Equality comparer it became twice as
      * fast as the non cached version. With the custom Enum comparer it became four times faster.
      */
+
     internal class ThreadsafeCssBuilderCache
     {
         private readonly ConcurrentDictionary<Type, ProcessCssDelegate> _cssExtractors = new ConcurrentDictionary<Type, ProcessCssDelegate>();

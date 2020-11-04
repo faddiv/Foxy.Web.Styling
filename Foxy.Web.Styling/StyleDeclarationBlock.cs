@@ -1,11 +1,11 @@
-using Blazorify.Utilities.Styling.Internals;
+using Foxy.Web.Styling.Internals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     /// <summary>
     /// Represents a group of style rules. The final result is obtainable with the ToString call.
@@ -177,7 +177,7 @@ namespace Blazorify.Utilities.Styling
             if (attributes.TryGetValue("style", out var style)
                 && !(style is null))
             {
-                var styleStr = (style as string) ?? style.ToString();
+                var styleStr = style as string ?? style.ToString();
                 if (styleStr.Length == 0)
                 {
                     return this;

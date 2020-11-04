@@ -1,6 +1,6 @@
 using System;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     /// <summary>
     /// Defines a class that provides the mechanisms to build a css class list. Usage:

@@ -2,7 +2,7 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     public class ServiceCollectionExtensionsTests
     {

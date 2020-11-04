@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Text;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     /// <summary>
     /// A collection of functions which can be used to configure the <see cref="CssBuilderOptions"/>.

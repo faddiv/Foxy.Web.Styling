@@ -9,12 +9,10 @@ using System.Diagnostics.CodeAnalysis;
     "StyleCop.CSharp.ReadabilityRules",
     "SA1101:PrefixLocalCallsWithThis",
     Justification = "Reviewed.")]
-
 [assembly: SuppressMessage(
     "StyleCop.CSharp.NamingRules",
     "SA1309:Field names should not begin with underscore",
     Justification = "Reviewed.")]
-
 [assembly: SuppressMessage(
     "StyleCop.CSharp.DocumentationRules",
     "SA1633:File should have header",

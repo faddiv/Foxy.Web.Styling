@@ -3,7 +3,7 @@ using System;
 using System.Reflection;
 using Xunit;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     public class DefaultCssBuilderNamingConventionPropertyTests
     {
@@ -60,7 +60,6 @@ namespace Blazorify.Utilities.Styling
         private class Dummy
         {
             public bool PascalCase_WithUnderScore { get; set; }
-
         }
     }
 }

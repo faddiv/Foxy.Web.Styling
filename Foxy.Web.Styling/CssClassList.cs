@@ -1,10 +1,10 @@
-using Blazorify.Utilities.Styling.Internals;
+using Foxy.Web.Styling.Internals;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     /// <summary>
     /// Represents a list of css classes. The final result is obtainable with the ToString call.

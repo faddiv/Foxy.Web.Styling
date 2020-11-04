@@ -1,4 +1,4 @@
-namespace Blazorify.Utilities.Styling.Internals
+namespace Foxy.Web.Styling.Internals
 {
     internal delegate void AddCssDelegate(string cssClass, bool condition);
 

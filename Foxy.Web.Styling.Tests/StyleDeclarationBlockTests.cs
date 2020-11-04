@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     public class StyleDeclarationBlockTests
     {
@@ -16,6 +16,7 @@ namespace Blazorify.Utilities.Styling
         private const string Result = "width:100px;height:200px";
 
         private StyleBuilder styleBuilder = new StyleBuilder();
+
         private StyleDeclarationBlock CreateStyleDefinition()
         {
             return styleBuilder.Create();
@@ -279,7 +280,6 @@ namespace Blazorify.Utilities.Styling
         public void AddMultiple_adds_Object()
         {
             var builder = CreateStyleDefinition();
-
 
             var result = builder.AddMultiple(new
             {

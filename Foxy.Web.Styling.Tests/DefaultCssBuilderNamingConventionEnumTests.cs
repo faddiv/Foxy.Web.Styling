@@ -2,7 +2,7 @@ using FluentAssertions;
 using System;
 using Xunit;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     public class DefaultCssBuilderNamingConventionEnumTests
     {
@@ -63,6 +63,5 @@ namespace Blazorify.Utilities.Styling
             PascalCase,
             PascalCase_WithUnderScore
         }
-
     }
 }

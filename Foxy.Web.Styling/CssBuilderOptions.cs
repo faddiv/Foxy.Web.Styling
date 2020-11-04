@@ -1,7 +1,8 @@
+using Foxy.Web.Styling.Internals;
 using System;
 using System.Reflection;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     /// <summary>
     /// Provides programmatic configuration for the css builder.

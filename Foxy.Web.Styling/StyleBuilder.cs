@@ -1,6 +1,7 @@
+using Foxy.Web.Styling.Internals;
 using System;
 
-namespace Blazorify.Utilities.Styling
+namespace Foxy.Web.Styling
 {
     /// <summary>
     /// Implementation of the <see cref="IStyleBuilder"/>. Use this class throught the interface.
