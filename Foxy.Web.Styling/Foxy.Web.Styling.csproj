@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -7,10 +7,10 @@
     <Copyright>Viktor Faddi</Copyright>
     <Authors>Viktor Faddi</Authors>
     <Company />
-    <PackageProjectUrl>https://github.com/faddiv/CommonLibraries/CommonLibraries.Core.Web</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/faddiv/Foxy.Web.Styling</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/CommonLibraries</RepositoryUrl>
-    <PackageReleaseNotes>See https://github.com/faddiv/CommonLibraries/releases</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/faddiv/Foxy.Web.Styling</RepositoryUrl>
+    <PackageReleaseNotes>See https://github.com/faddiv/Foxy.Web.Styling/releases</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
