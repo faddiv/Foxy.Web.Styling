@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>CommonLibraries.Core.Web.xml</DocumentationFile>
+    <DocumentationFile>Foxy.Web.Styling.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

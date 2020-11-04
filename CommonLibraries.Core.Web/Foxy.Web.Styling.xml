@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>CommonLibraries.Core.Web</name>
+        <name>Foxy.Web.Styling</name>
     </assembly>
     <members>
         <member name="T:Blazorify.Utilities.Styling.CssBuilder">

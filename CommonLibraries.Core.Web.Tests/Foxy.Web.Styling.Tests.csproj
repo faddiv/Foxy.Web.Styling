@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>CommonLibraries.Core.Web</RootNamespace>
+    <RootNamespace>Foxy.Web.Styling</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CommonLibraries.Core.Web\CommonLibraries.Core.Web.csproj" />
+    <ProjectReference Include="..\CommonLibraries.Core.Web\Foxy.Web.Styling.csproj" />
   </ItemGroup>
 
 </Project>
