@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foxy.Web.Styling", "CommonLibraries.Core.Web\Foxy.Web.Styling.csproj", "{03BCF829-7DEF-423A-82C0-58776EABA480}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foxy.Web.Styling", "Foxy.Web.Styling\Foxy.Web.Styling.csproj", "{03BCF829-7DEF-423A-82C0-58776EABA480}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foxy.Web.Styling.Tests", "CommonLibraries.Core.Web.Tests\Foxy.Web.Styling.Tests.csproj", "{F1041554-A8CD-4FF0-B612-724053EA6125}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foxy.Web.Styling.Tests", "Foxy.Web.Styling.Tests\Foxy.Web.Styling.Tests.csproj", "{F1041554-A8CD-4FF0-B612-724053EA6125}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

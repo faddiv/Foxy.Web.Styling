@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CommonLibraries.Core.Web\Foxy.Web.Styling.csproj" />
+    <ProjectReference Include="..\Foxy.Web.Styling\Foxy.Web.Styling.csproj" />
   </ItemGroup>
 
 </Project>
