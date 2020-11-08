@@ -33,6 +33,11 @@ Output:
 ```html
     <div class="foo baz">...</div>
 ```
+## Classname generation
+When you use the CssBuilder with objects or enum values then the property name and enum value is converted to class name. It is determined at startup in configuration. The default is kebab-case with converting underscore to hyphen for bot properties and enums but it is configurable invidually. Examples:
+ - BarBaz -> bar-baz
+ - Bar_baz -> bar-baz
+ - Bar_Baz -> bar--baz
 
 ## Examples
 The CssBuilder works through its indexer mainly and it accepts several type of parameters.
@@ -59,6 +64,23 @@ Can be used with prepared list or with iterator methods.
 ```csharp
     var other = Css["bar", "baz"];
     Css["foo", other] // -> "foo bar baz"
+```
+### From enums
+Can be used with enum values. The name generation is determined by ```options.EnumToClassNameConverter```. Default is kebab-case with converting underscore to hyphen.
+ ```csharp
+    public enum Values {
+        Foo,
+        Bar, 
+        Baz
+    }
+
+    Css[Values.Foo, Values.Bar, Values.Baz] // -> "foo bar baz"
+```
+
+### From objects
+Can be used with generic object (Mainly with anonymous) where all the properties needs to be bool property. The name generation is determined by ```options.PropertyToClassNameConverter```. Default is kebab-case with converting underscore to hyphen.
+ ```csharp
+    Css[new { Foo = true, Bar = false, Baz = true }] // -> "foo baz"
 ```
 
 ### From ```Dictionary<string, object>```
