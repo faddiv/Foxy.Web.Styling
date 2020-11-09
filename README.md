@@ -14,8 +14,10 @@ In case of the CssBuilder you can add options also:
 ```csharp
     public void ConfigureServices(IServiceCollection services) {
         services.AddCssBuilder(options => {
-            options.PropertyToClassNameConverter = CssBuilderNamingConventions.KebabCaseWithUnderscoreToHyphen;
-            options.EnumToClassNameConverter = CssBuilderNamingConventions.KebabCaseWithUnderscoreToHyphen;
+            options.PropertyToClassNameConverter = 
+				CssBuilderNamingConventions.KebabCaseWithUnderscoreToHyphen;
+            options.EnumToClassNameConverter = 
+				CssBuilderNamingConventions.KebabCaseWithUnderscoreToHyphen;
             options.ExcludeDuplication = false;
         });
 ```
