@@ -112,7 +112,8 @@ Output:
 You can also start with an empty CssClassList and build it with different way with the Create method. This method also can have an options also in which case uses that to determine how the output generated. If you use multiple setups then strongly recommended to make a singleton instance from these options since it is connected to the caching mechanism. [See later](#Caching-in-CssBuilder-and-StyleBuilder)
 ```csharp
     var css = Css.Create();
-    css.Add("foo").Add("baz").AddMultiple("foo2", "baz2"); // -> "foo baz foo2 baz2"
+    css.Add("foo").Add("baz").AddMultiple("foo2", "baz2"); 
+	// -> "foo baz foo2 baz2"
 ```
 
 # StyleBuilder examples
@@ -121,7 +122,8 @@ The StyleBuilder works mainly through its indexer and it accepts several type of
 ## ValueTuples
 It can have property, value pair only or with condition. the value and condition can be a parameterless function also. 
 ```csharp
-    Styles[("width", "100px"), ("height", "200px", true), ("border", null)] // -> "width:100px;height:200px"
+    Styles[("width", "100px"), ("height", "200px", true), ("border", null)] 
+	// -> "width:100px;height:200px"
 ```
 
 ## From ```Dictionary<string, object>```
@@ -156,7 +158,8 @@ The property name is used as property. It is converted with kebab-case and under
 You can also start with an empty StyleDeclarationBlock and build it with different way with the Create method.
 ```csharp
     var styles = Styles.Create();
-    css.Add("width", "100px").Add("height", "200px").AddMultiple(("border", "1px")); //"width:100px;height:200px;border:1px"
+    css.Add("width", "100px").Add("height", "200px").AddMultiple(("border", "1px")); 
+	// -> "width:100px;height:200px;border:1px"
 ```
 
 # Caching in CssBuilder and StyleBuilder
