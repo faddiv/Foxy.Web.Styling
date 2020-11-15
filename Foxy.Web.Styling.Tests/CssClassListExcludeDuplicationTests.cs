@@ -73,17 +73,6 @@ namespace Foxy.Web.Styling
         }
 
         [Fact]
-        public void Add_considers_multi_css_in_string_with_predicate()
-        {
-            var result = CreateCssDefinition()
-                .Add("c1 c2")
-                .Add("c2 c3", () => true)
-                .ToString();
-
-            result.Should().Be("c1 c2 c3");
-        }
-
-        [Fact]
         public void Add_considers_multi_css_in_tuple_with_condition()
         {
             var result = CreateCssDefinition()
@@ -115,17 +104,6 @@ namespace Foxy.Web.Styling
                 .ToString();
 
             result.Should().Be("c1 c2 c3");
-        }
-
-        [Fact]
-        public void Add_considers_multi_css_in_tuple_with_predicate()
-        {
-            var result = CreateCssDefinition()
-                .Add("c1 c2")
-                .Add(("c2 c3", () => true), ("c3 c4", () => true))
-                .ToString();
-
-            result.Should().Be("c1 c2 c3 c4");
         }
 
         [Fact]

@@ -42,7 +42,7 @@ namespace Foxy.Web.Styling
 
         /// <summary>
         /// Adds multiple class definition which can be string, enum, (string, bool),
-        /// (string, Func&gt;bool&lt;), IEnumerable&gt;string&lt;, another CssDefinition,
+        /// IEnumerable&gt;string&lt;, another CssDefinition,
         /// IReadOnlyDictionary&gt;string, object&lt; with an optional class key.
         /// </summary>
         /// <param name="values">The list of class definitions.</param>
@@ -67,10 +67,6 @@ namespace Foxy.Web.Styling
                 else if (value is ValueTuple<string, bool> tupleWithCondition)
                 {
                     AddInner(tupleWithCondition.Item1, tupleWithCondition.Item2);
-                }
-                else if (value is ValueTuple<string, Func<bool>> tupleWithPredicate)
-                {
-                    AddInner(tupleWithPredicate.Item1, tupleWithPredicate.Item2());
                 }
                 else if (value is IEnumerable<string> cssList)
                 {
@@ -107,24 +103,6 @@ namespace Foxy.Web.Styling
         }
 
         /// <summary>
-        /// Adds the css class to the list if the second parameter evaulates to true.
-        /// If the css class is null or empty it is skipped.
-        /// </summary>
-        /// <param name="cssClass">A css class.</param>
-        /// <param name="predicate">a predicate, if it returns true then the css class is added to the list.</param>
-        /// <returns>Returns with this so the calls can be chained.</returns>
-        public CssClassList Add(string cssClass, Func<bool> predicate)
-        {
-            if (predicate is null)
-            {
-                throw new ArgumentNullException(nameof(predicate));
-            }
-
-            AddInner(cssClass, predicate());
-            return this;
-        }
-
-        /// <summary>
         /// Adds the tuples to the list as css classes. The first parameter of the
         /// tuple is used as css class and it is added only if the second value is true.
         /// </summary>
@@ -143,30 +121,6 @@ namespace Foxy.Web.Styling
             foreach (var item in tuple)
             {
                 AddInner(item.Item1, item.Item2);
-            }
-
-            return this;
-        }
-
-        /// <summary>
-        /// Adds the tuples to the list as css classes. The first parameter of the
-        /// tuple is used as css class and it is added only if the second function returns true.
-        /// </summary>
-        /// <param name="tuple">
-        /// A tuple where the first parameter is a css class and the second
-        /// value is a function which determines if the class should be added.
-        /// </param>
-        /// <returns>Returns with this so the calls can be chained.</returns>
-        public CssClassList Add(params (string, Func<bool>)[] tuple)
-        {
-            if (tuple == null || tuple.Length == 0)
-            {
-                return this;
-            }
-
-            foreach (var item in tuple)
-            {
-                AddInner(item.Item1, item.Item2());
             }
 
             return this;

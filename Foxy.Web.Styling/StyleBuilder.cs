@@ -1,5 +1,4 @@
 using Foxy.Web.Styling.Internals;
-using System;
 
 namespace Foxy.Web.Styling
 {
@@ -24,51 +23,6 @@ namespace Foxy.Web.Styling
             get
             {
                 return Create().AddMultiple(arguments);
-            }
-        }
-
-        /// <inheritdoc />
-        public StyleDeclarationBlock this[params (string, string, Func<bool>)[] arguments]
-        {
-            get
-            {
-                var style = Create();
-                foreach (var item in arguments)
-                {
-                    style.Add(item.Item1, item.Item2, item.Item3);
-                }
-
-                return style;
-            }
-        }
-
-        /// <inheritdoc />
-        public StyleDeclarationBlock this[params (string, Func<string>, bool)[] arguments]
-        {
-            get
-            {
-                var style = Create();
-                foreach (var item in arguments)
-                {
-                    style.Add(item.Item1, item.Item2, item.Item3);
-                }
-
-                return style;
-            }
-        }
-
-        /// <inheritdoc />
-        public StyleDeclarationBlock this[params (string, Func<string>, Func<bool>)[] arguments]
-        {
-            get
-            {
-                var style = Create();
-                foreach (var item in arguments)
-                {
-                    style.Add(item.Item1, item.Item2, item.Item3);
-                }
-
-                return style;
             }
         }
 

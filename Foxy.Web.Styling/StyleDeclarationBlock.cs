@@ -49,95 +49,6 @@ namespace Foxy.Web.Styling
         }
 
         /// <summary>
-        /// Adds a stlye rule to the end of the declaration block if the
-        /// condition is true and the value function evaulates to not null or empty.
-        /// </summary>
-        /// <param name="property">
-        /// The property part of the style rule.
-        /// </param>
-        /// <param name="value">
-        /// A Function that calculate the value part of the style rule.
-        /// If it returns null or empty then the style rule won't be added.
-        /// </param>
-        /// <param name="condition">
-        /// A condition which determines if the style rule should be added.
-        /// </param>
-        /// <exception cref="ArgumentException">Property is null or empty.</exception>
-        /// <exception cref="ArgumentNullException">The value is null.</exception>
-        /// <returns>Returns with this so the calls can be chained.</returns>
-        public StyleDeclarationBlock Add(string property, Func<string> value, bool condition = true)
-        {
-            if (value is null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            AddInner(property, value(), condition);
-            return this;
-        }
-
-        /// <summary>
-        /// Adds a stlye rule to the end of the declaration block if the
-        /// predicate evaulates to true and the value is not null or empty.
-        /// </summary>
-        /// <param name="property">
-        /// The property part of the style rule.
-        /// </param>
-        /// <param name="value">
-        /// The value part of the style rule. Can be null or empty in which case
-        /// the rule won't be added.
-        /// </param>
-        /// <param name="predicate">
-        /// A predicate which if evaulates to true then the style rule added othervise it skipped.
-        /// </param>
-        /// <exception cref="ArgumentException">Property is null or empty.</exception>
-        /// <exception cref="ArgumentNullException">The value or the predicate is null.</exception>
-        /// <returns>Returns with this so the calls can be chained.</returns>
-        public StyleDeclarationBlock Add(string property, string value, Func<bool> predicate)
-        {
-            if (predicate is null)
-            {
-                throw new ArgumentNullException(nameof(predicate));
-            }
-
-            AddInner(property, value, predicate());
-            return this;
-        }
-
-        /// <summary>
-        /// Adds a stlye rule to the end of the declaration block if the
-        /// predicate evaulates to true and the value function evaulates to not null or empty.
-        /// </summary>
-        /// <param name="property">
-        /// The property part of the style rule.
-        /// </param>
-        /// <param name="value">
-        /// A Function that calculate the value part of the style rule.
-        /// If it returns null or empty then the style rule won't be added.
-        /// </param>
-        /// <param name="predicate">
-        /// A predicate which if evaulates to true then the style rule added othervise it skipped.
-        /// </param>
-        /// <exception cref="ArgumentException">Property is null or empty.</exception>
-        /// <exception cref="ArgumentNullException">The value or the predicate is null.</exception>
-        /// <returns>Returns with this so the calls can be chained.</returns>
-        public StyleDeclarationBlock Add(string property, Func<string> value, Func<bool> predicate)
-        {
-            if (value is null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            if (predicate is null)
-            {
-                throw new ArgumentNullException(nameof(predicate));
-            }
-
-            AddInner(property, value(), predicate());
-            return this;
-        }
-
-        /// <summary>
         /// Adds the styles from the given block to the end of this block.
         /// It can be null.
         /// </summary>
@@ -250,25 +161,9 @@ namespace Foxy.Web.Styling
                 {
                     AddInner(type1.Item1, type1.Item2);
                 }
-                else if (item is ValueTuple<string, Func<string>> type2)
-                {
-                    AddInner(type2.Item1, type2.Item2());
-                }
                 else if (item is ValueTuple<string, string, bool> type3)
                 {
                     AddInner(type3.Item1, type3.Item2, type3.Item3);
-                }
-                else if (item is ValueTuple<string, Func<string>, bool> type4)
-                {
-                    AddInner(type4.Item1, type4.Item2(), type4.Item3);
-                }
-                else if (item is ValueTuple<string, string, Func<bool>> type5)
-                {
-                    AddInner(type5.Item1, type5.Item2, type5.Item3());
-                }
-                else if (item is ValueTuple<string, Func<string>, Func<bool>> type6)
-                {
-                    AddInner(type6.Item1, type6.Item2(), type6.Item3());
                 }
                 else if (item is StyleDeclarationBlock styleBuilder)
                 {

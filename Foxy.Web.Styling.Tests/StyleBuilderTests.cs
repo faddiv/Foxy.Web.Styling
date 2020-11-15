@@ -22,43 +22,11 @@ namespace Foxy.Web.Styling
         public void indexer_Should_apply_values()
         {
             var style = CreateStyleBuilder();
-            var result = style[(Width, Value1, true), (Border, Value3, false), (Height, Value2, true)].ToString();
-
-            result.Should().Be(Result);
-        }
-
-        [Fact]
-        public void indexer2_Should_apply_values()
-        {
-            var style = CreateStyleBuilder();
             var result = style[
-                (Width, Value1, () => true),
-                (Border, Value3, () => false),
-                (Height, Value2, () => true)].ToString();
-
-            result.Should().Be(Result);
-        }
-
-        [Fact]
-        public void indexer3_Should_apply_values()
-        {
-            var style = CreateStyleBuilder();
-            var result = style[
-                (Width, () => Value1, true),
-                (Border, () => Value3, false),
-                (Height, () => Value2, true)].ToString();
-
-            result.Should().Be(Result);
-        }
-
-        [Fact]
-        public void indexer4_Should_apply_values()
-        {
-            var style = CreateStyleBuilder();
-            var result = style[
-                (Width, () => Value1, () => true),
-                (Border, () => Value3, () => false),
-                (Height, () => Value2, () => true)].ToString();
+                (Width, Value1, true),
+                (Border, Value3, false),
+                new { Height = Value2}]
+                .ToString();
 
             result.Should().Be(Result);
         }

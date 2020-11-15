@@ -67,25 +67,5 @@ namespace Foxy.Web.Styling
 
             result.Should().Be("");
         }
-
-        [Fact]
-        public void CssBuilder_indexer2_processes_the_input_params_with_function()
-        {
-            var css = CreateCssBuilder();
-
-            var result = css["c1", ("c2", () => true)].ToString();
-
-            result.Should().Be("c1 c2");
-        }
-
-        [Fact]
-        public void CssBuilder_indexer2_skips_null()
-        {
-            var css = CreateCssBuilder();
-
-            var result = css[null, ("c2", () => true)].ToString();
-
-            result.Should().Be("c2");
-        }
     }
 }

@@ -1,5 +1,3 @@
-using System;
-
 namespace Foxy.Web.Styling
 {
     /// <summary>
@@ -24,15 +22,6 @@ namespace Foxy.Web.Styling
             get
             {
                 return Create().AddMultiple(arguments);
-            }
-        }
-
-        /// <inheritdoc />
-        public CssClassList this[string cssClass, params (string, Func<bool>)[] tuple]
-        {
-            get
-            {
-                return Create().Add(cssClass).Add(tuple);
             }
         }
 

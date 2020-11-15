@@ -39,14 +39,6 @@ namespace Foxy.Web.Styling
         }
 
         [Fact]
-        public void Add_String_Predicate_adds_string_parameter_if_predicate_evaulates_true()
-        {
-            var result = CreateCssDefinition().Add("c1").Add("c2", () => false).Add("c3", () => true).ToString();
-
-            result.Should().Be("c1 c3");
-        }
-
-        [Fact]
         public void Add_Object_adds_Properties_as_css()
         {
             var result = CreateCssDefinition().Add(new { alfa = true, beta = true }).ToString();
@@ -74,17 +66,6 @@ namespace Foxy.Web.Styling
         public void Add_Tuple_adds_values_from_the_tuple_if_true()
         {
             var result = CreateCssDefinition().Add(("c1", true), ("c2", false), ("c3", true)).ToString();
-
-            result.Should().Be("c1 c3");
-        }
-
-        [Fact]
-        public void Add_Tuple_adds_values_from_the_tuple_if_evaulates_true()
-        {
-            var result = CreateCssDefinition().Add(
-                ("c1", () => true),
-                ("c2", () => false),
-                ("c3", () => true)).ToString();
 
             result.Should().Be("c1 c3");
         }
@@ -145,32 +126,31 @@ namespace Foxy.Web.Styling
         {
             var attributes = new Dictionary<string, object>
             {
-                {"class", "c7" },
+                {"class", "c6" },
                 {"other", 123 }
             };
-            var other = CreateCssDefinition().Add("c8").Add("c9");
+            var other = CreateCssDefinition().Add("c7").Add("c8");
 
             var result = CreateCssDefinition().AddMultiple(
                 "c1",
                 new { c2 = true },
                 ("c3", true),
-                ("c4", new Func<bool>(() => true)),
-                new[] { "c5", "c6" },
+                new[] { "c4", "c5" },
                 attributes,
                 other,
-                Dummy.c10
+                Dummy.c9
                 ).ToString();
 
-            result.Should().Be("c1 c2 c3 c4 c5 c6 c7 c8 c9 c10");
+            result.Should().Be("c1 c2 c3 c4 c5 c6 c7 c8 c9");
         }
 
         [Fact]
         public void Enum_caching_works_correctly()
         {
-            var result1 = CreateCssDefinition().AddMultiple(Dummy.NameName_name, Dummy.c10, Dummy2.SomeOther, Dummy2.c20).ToString();
-            var result2 = CreateCssDefinition().AddMultiple(Dummy.NameName_name, Dummy.c10, Dummy2.SomeOther, Dummy2.c20).ToString();
+            var result1 = CreateCssDefinition().AddMultiple(Dummy.NameName_name, Dummy.c9, Dummy2.SomeOther, Dummy2.c20).ToString();
+            var result2 = CreateCssDefinition().AddMultiple(Dummy.NameName_name, Dummy.c9, Dummy2.SomeOther, Dummy2.c20).ToString();
 
-            result1.Should().Be("name-name-name c10 some-other c20");
+            result1.Should().Be("name-name-name c9 some-other c20");
             result1.Should().Be(result2);
         }
 
@@ -198,7 +178,7 @@ namespace Foxy.Web.Styling
         public enum Dummy
         {
             NameName_name = 1,
-            c10 = 2
+            c9 = 2
         }
 
         public enum Dummy2
