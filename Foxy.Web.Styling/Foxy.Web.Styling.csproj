@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>This package contains a Powerful CssBuilder and StyleBuilder. It targets mainly Blazor use cases but it is perfect to use in asp.net mvc server side scenarios also.</Description>
-    <PackageTags>asp.net; asp.net mvc; asp.net mvc core; blazor; css; style; builder;</PackageTags>
+    <PackageTags>AspNet; Mvc; AspNetMvc; Blazor; Css; Style; Builder; Styling</PackageTags>
     <Copyright>Viktor Faddi</Copyright>
     <Authors>Viktor Faddi</Authors>
     <Company />
@@ -12,6 +12,7 @@
     <RepositoryUrl>https://github.com/faddiv/Foxy.Web.Styling</RepositoryUrl>
     <PackageReleaseNotes>See https://github.com/faddiv/Foxy.Web.Styling/releases</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -28,6 +29,13 @@
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
