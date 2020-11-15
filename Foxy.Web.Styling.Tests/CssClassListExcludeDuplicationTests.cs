@@ -8,7 +8,7 @@ namespace Foxy.Web.Styling
     {
         private CssBuilder cssBuilder = new CssBuilder(new CssBuilderOptions
         {
-            ExcludeDuplication = true
+            Deduplicate = true
         });
 
         private CssClassList CreateCssDefinition(CssBuilderOptions options = null)
@@ -152,6 +152,30 @@ namespace Foxy.Web.Styling
                 .ToString();
 
             result.Should().Be("c1 c2 c3");
+        }
+
+        [Fact]
+        public void Add_with_condition_false_removes_added_class()
+        {
+            var result = CreateCssDefinition()
+                .Add("c1 c2 c3 c4")
+                .Add(new { c1 = false })
+                .Add("c2", false)
+                .Add(("c3", false))
+                .ToString();
+
+            result.Should().Be("c4");
+        }
+
+        [Fact]
+        public void Add_with_condition_false_can_remove_multiple_class()
+        {
+            var result = CreateCssDefinition()
+                .Add("c1 c2 c3")
+                .Add("c1 c2", false)
+                .ToString();
+
+            result.Should().Be("c3");
         }
     }
 }

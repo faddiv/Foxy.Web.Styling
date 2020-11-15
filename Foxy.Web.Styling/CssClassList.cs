@@ -12,7 +12,7 @@ namespace Foxy.Web.Styling
     public class CssClassList
     {
         private const string Separator = " ";
-        private static readonly char[] _separatorArray = new[] { ' ' };
+        private static readonly string[] _separatorArray = new[] { Separator };
 
         private readonly List<string> _cssClasses;
         private readonly CssBuilderOptions _options;
@@ -322,20 +322,38 @@ namespace Foxy.Web.Styling
 
         private void AddInner(string value, bool condition = true)
         {
-            if (string.IsNullOrEmpty(value) || !condition)
+            if (string.IsNullOrEmpty(value))
             {
                 return;
             }
 
-            foreach (var cssClass in value.Split(_separatorArray, StringSplitOptions.RemoveEmptyEntries))
+            if (!condition)
             {
-                if (_options.ExcludeDuplication && HasClass(cssClass))
+                if (_options.Deduplicate)
+                {
+                    foreach (var cssClass in SplitToClasses(value))
+                    {
+                        _cssClasses.Remove(cssClass);
+                    }
+                }
+
+                return;
+            }
+
+            foreach (var cssClass in SplitToClasses(value))
+            {
+                if (_options.Deduplicate && HasClass(cssClass))
                 {
                     continue;
                 }
 
                 _cssClasses.Add(cssClass);
             }
+        }
+
+        private string[] SplitToClasses(string value)
+        {
+            return value.Split(_separatorArray, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }

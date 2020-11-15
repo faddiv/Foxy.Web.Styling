@@ -34,10 +34,10 @@ namespace Foxy.Web.Styling
         public Func<Enum, string> EnumToClassNameConverter { get; set; } = CssBuilderNamingConventions.KebabCaseWithUnderscoreToHyphen;
 
         /// <summary>
-        /// Gets or sets a value indicating whether the class names should be checked before adding to the list.
-        /// If true then if a css class added then it isn't added again.
+        /// Gets or sets a value indicating whether the class names should be unique in the class list.
+        /// If true then a class added only once and if condition is false and the class is in the list then the class removed.
         /// </summary>
-        public bool ExcludeDuplication { get; set; } = false;
+        public bool Deduplicate { get; set; } = false;
 
         /// <summary>
         /// Clears the connected cache. Use this if you change the settings.
