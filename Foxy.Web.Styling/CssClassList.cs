@@ -18,10 +18,12 @@ namespace Foxy.Web.Styling
         private readonly CssBuilderOptions _options;
         private readonly ThreadsafeCssBuilderCache _cache;
 
-        internal CssClassList(CssBuilderOptions options)
+        internal CssClassList(CssBuilderOptions options, ThreadsafeCssBuilderCache cache)
         {
             _cssClasses = new List<string>();
             _options = options ?? throw new ArgumentNullException(nameof(options));
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+
             if (_options.EnumToClassNameConverter == null)
             {
                 throw new ArgumentException("Options.EnumToClassNameConverter can't be null.");
@@ -31,8 +33,6 @@ namespace Foxy.Web.Styling
             {
                 throw new ArgumentException("Options.PropertyToClassNameConverter can't be null.");
             }
-
-            _cache = options.GetCache();
         }
 
         /// <summary>

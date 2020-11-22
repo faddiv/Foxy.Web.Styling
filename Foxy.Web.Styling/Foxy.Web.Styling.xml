@@ -136,11 +136,6 @@
             If true then a class added only once and if condition is false and the class is in the list then the class removed.
             </summary>
         </member>
-        <member name="M:Foxy.Web.Styling.CssBuilderOptions.ClearCache">
-            <summary>
-            Clears the connected cache. Use this if you change the settings.
-            </summary>
-        </member>
         <member name="T:Foxy.Web.Styling.CssClassList">
             <summary>
             Represents a list of css classes. The final result is obtainable with the ToString call.

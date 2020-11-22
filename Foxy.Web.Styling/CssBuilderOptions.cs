@@ -13,14 +13,11 @@ namespace Foxy.Web.Styling
     /// </remarks>
     public class CssBuilderOptions
     {
-        private readonly ThreadsafeCssBuilderCache _cache;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CssBuilderOptions"/> class.
         /// </summary>
         public CssBuilderOptions()
         {
-            _cache = new ThreadsafeCssBuilderCache();
         }
 
         /// <summary>
@@ -39,17 +36,5 @@ namespace Foxy.Web.Styling
         /// </summary>
         public bool Deduplicate { get; set; } = false;
 
-        /// <summary>
-        /// Clears the connected cache. Use this if you change the settings.
-        /// </summary>
-        public void ClearCache()
-        {
-            _cache.ClearCache();
-        }
-
-        internal ThreadsafeCssBuilderCache GetCache()
-        {
-            return _cache;
-        }
     }
 }
