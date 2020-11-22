@@ -35,6 +35,5 @@ namespace Foxy.Web.Styling
         /// If true then a class added only once and if condition is false and the class is in the list then the class removed.
         /// </summary>
         public bool Deduplicate { get; set; } = false;
-
     }
 }

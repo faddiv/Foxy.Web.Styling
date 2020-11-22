@@ -49,6 +49,5 @@ namespace Foxy.Web.Styling
         {
             return new ThreadsafeCssBuilderCache();
         }
-
     }
 }
