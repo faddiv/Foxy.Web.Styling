@@ -168,3 +168,10 @@ You can also start with an empty StyleDeclarationBlock and build it with differe
 
 # Caching in CssBuilder and StyleBuilder
 There are several process consuming operations so I made a caching mechanism for enum to class and property name to class conversion and also for object processing. This cache is connected to the options since if different options is used it is excepted to work correctly also.
+
+# Thanks
+Thanks for .net development team because of the documentation comments in the .net ecosystem. It helped me out to write my own documentation that hopefully have sense.
+
+I also say thank you for my colleague Horia who designed the foxy icon.
+
+Lastly thanks for Jed Watson for the amazing classnames javascript library.

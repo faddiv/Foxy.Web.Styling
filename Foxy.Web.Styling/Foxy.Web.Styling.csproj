@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>This package contains a Powerful CssBuilder and StyleBuilder. It targets mainly Blazor use cases but it is perfect to use in asp.net mvc server side scenarios also.</Description>
+    <Description>A Style and Css builder for Blazor and ASP.NET Core web applications inspired by the classnames javascript library.</Description>
     <PackageTags>AspNet; Mvc; AspNetMvc; Blazor; Css; Style; Builder; Styling</PackageTags>
     <Copyright>Copyright © Viktor Faddi 2020</Copyright>
     <Authors>Viktor Faddi</Authors>
