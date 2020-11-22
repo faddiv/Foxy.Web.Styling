@@ -1,4 +1,6 @@
 # Foxy.Web.Styling
+[![Build status](https://ci.appveyor.com/api/projects/status/gbm5i27j662db449?svg=true)](https://ci.appveyor.com/project/faddiv/foxy-web-styling)
+
 A Style and Css builder for Blazor and ASP.NET Core web applications inspired by the [classnames](https://github.com/JedWatson/classnames) javascript library.
 
 # Getting started
